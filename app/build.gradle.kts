@@ -66,4 +66,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    //DEPENDENCIAS COMUNICACAO WEB
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation( libs.adapter.rxjava2)
+
+
+    //BANCO E DADOS ROOM
+    implementation (libs.androidx.room.runtime)
+    implementation(libs.androidx.monitor)
+    implementation(libs.androidx.room.compiler)
+
+    // Koin for Android
+    implementation (libs.koin.android)
 }
