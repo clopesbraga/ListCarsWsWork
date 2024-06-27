@@ -1,13 +1,15 @@
 package br.com.wsworks.listcarswswork.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Car(
-    val ano: Int,
-    val combustivel: String,
-    val cor: String,
-    val id: Int,
-    val modelo_id: Int,
-    val nome_modelo: String,
-    val num_portas: Int,
-    val timestamp_cadastro: Long,
-    val valor: Double
+    @SerializedName("ano") val ano: Int,
+    @SerializedName("combustivel") val combustivel: String,
+    @SerializedName("cor") val cor: String,
+    @SerializedName("id") val id: Int,
+    @SerializedName("modelo_id") val modelo_id: Int,
+    @SerializedName("nome_modelo") val nome_modelo: String,
+    @SerializedName("num_portas") val num_portas: Int,
+    @SerializedName("timestamp_cadastro") val timestamp_cadastro: Long,
+    @SerializedName("valor")val valor: Double
 )
