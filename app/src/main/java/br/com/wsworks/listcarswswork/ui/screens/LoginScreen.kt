@@ -1,5 +1,6 @@
 package br.com.wsworks.listcarswswork.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.wsworks.listcarswswork.ui.theme.ListCarsWsWorkTheme
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import java.lang.reflect.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation as PasswordVisualTransformation1
 
@@ -37,12 +41,14 @@ fun DefaultPreview() {
 @Composable
 fun LoginScreen(navController: NavHostController) {
 
-    var username by remember { mutableStateOf("") }
+    val auth = Firebase.auth
+    var username by remember { mutableStateOf(auth.currentUser?.email ?: "") }
     var password by remember { mutableStateOf("") }
 
-    Column(modifier = androidx.compose.ui.Modifier
+    Column(
+        modifier = androidx.compose.ui.Modifier
 
-        .fillMaxSize(),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
 
@@ -51,7 +57,11 @@ fun LoginScreen(navController: NavHostController) {
             OutlinedTextField(
                 value = username,
                 onValueChange = { username = it },
-                label = { Text("Login") })
+                label = { Text("Email") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                singleLine = true
+            )
+
         }
 
         Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
@@ -66,17 +76,40 @@ fun LoginScreen(navController: NavHostController) {
             )
         }
         Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
-        Box { SaveLoginButton(navController, username, password) }
+
+        Box { SaveLoginButton(navController, username, password, auth) }
     }
 
 }
 
 @Composable
-fun SaveLoginButton(navController: NavHostController, username: String, password: String) {
+private fun SaveLoginButton(
+    navController: NavHostController,
+    username: String,
+    password: String,
+    auth: FirebaseAuth
+) {
     OutlinedButton(onClick = {
 
-        if (username.isNotEmpty() && password.isNotEmpty()) {
-            navController.navigate("list")
+        if (username.isEmpty()) {
+
+            auth.createUserWithEmailAndPassword(username, password)
+                .addOnCompleteListener { logintTask ->
+                    if (logintTask.isSuccessful) {
+                        navController.navigate("list")
+                    } else {
+                        Log.d("CREATE_ERROR", "USER NOT SAVED -> ${logintTask.exception}")
+                    }
+                }
+        } else {
+            auth.signInWithEmailAndPassword(username, password)
+                .addOnCompleteListener { loginTask ->
+                    if (loginTask.isSuccessful) {
+                        navController.navigate("list")
+                    } else {
+                        Log.d("LOGIN_ERROR", "LOGIN ERROR -> ${loginTask.exception}")
+                    }
+                }
         }
 
     }) {
