@@ -2,7 +2,6 @@ package br.com.wsworks.listcarswswork.viewmodel
 
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.wsworks.listcarswswork.api.Endpoints
@@ -10,7 +9,6 @@ import br.com.wsworks.listcarswswork.api.ListCarsApi
 import br.com.wsworks.listcarswswork.model.api.Car
 import br.com.wsworks.listcarswswork.model.database.LeadsModel
 import br.com.wsworks.listcarswswork.repository.Cars.CarsRepository
-import com.google.gson.Gson
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

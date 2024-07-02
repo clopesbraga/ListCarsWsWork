@@ -27,7 +27,6 @@ import br.com.wsworks.listcarswswork.ui.theme.ListCarsWsWorkTheme
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import java.lang.reflect.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation as PasswordVisualTransformation1
 
 @Preview(showBackground = true)
