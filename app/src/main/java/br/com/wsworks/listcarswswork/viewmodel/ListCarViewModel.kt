@@ -1,19 +1,28 @@
 package br.com.wsworks.listcarswswork.viewmodel
 
 
+import android.app.Application
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.wsworks.listcarswswork.api.Endpoints
 import br.com.wsworks.listcarswswork.api.ListCarsApi
-import br.com.wsworks.listcarswswork.model.Car
+import br.com.wsworks.listcarswswork.model.api.Car
+import br.com.wsworks.listcarswswork.model.database.LeadsModel
+import br.com.wsworks.listcarswswork.repository.Cars.CarsRepository
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ListCarViewModel : ViewModel() {
+class ListCarViewModel(application: Application) : ViewModel() {
 
     private val _listCars = MutableStateFlow<List<Car>>(emptyList())
     val listCarsState = _listCars.asStateFlow()
+
+    private val _mCarRepository by lazy {
+        CarsRepository(application.applicationContext)
+    }
 
 
     fun getListCars() {
@@ -36,5 +45,23 @@ class ListCarViewModel : ViewModel() {
         }
     }
 
+    fun save(car: Car) {
+        viewModelScope.launch {
+
+            val leadsModel = LeadsModel(
+
+                car.id,
+                car.timestamp_cadastro,
+                car.modelo_id,
+                car.ano,
+                car.combustivel,
+                car.num_portas,
+                car.cor,
+                car.nome_modelo,
+                car.valor
+            )
+            _mCarRepository.save(leadsModel)
+        }
+    }
 
 }
