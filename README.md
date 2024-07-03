@@ -36,6 +36,7 @@
 
 ## Demonstração da aplicação
 
-| Login | Lista de carros | Detalhes |
-|----------|----------|----------|
-| ![Screenshot_20240703_092130](https://github.com/clopesbraga/ListCarsWsWork/assets/58059669/78202387-0150-4747-8f9c-23f8de1d870c)| ![Screenshot_20240703_145341](https://github.com/clopesbraga/ListCarsWsWork/assets/58059669/8d6da893-8e2f-4822-a2b5-4763264c772d)| ![Screenshot_20240703_145423](https://github.com/clopesbraga/ListCarsWsWork/assets/58059669/fa0d9321-bebd-49e2-a7f0-2b22cb6e17ac)|
+| Login | Lista de carros | Detalhes | Realizacao registro |
+|----------|----------|----------|----------|
+|![Screenshot_20240703_185649](https://github.com/clopesbraga/ListCarsWsWork/assets/58059669/1c22f890-45e7-4fc0-8051-644ceda1dfb4)|![Screenshot_20240703_145341](https://github.com/clopesbraga/ListCarsWsWork/assets/58059669/8d6da893-8e2f-4822-a2b5-4763264c772d)| ![Screenshot_20240703_145423](https://github.com/clopesbraga/ListCarsWsWork/assets/58059669/fa0d9321-bebd-49e2-a7f0-2b22cb6e17ac)|![Screenshot_20240703_185323](https://github.com/clopesbraga/ListCarsWsWork/assets/58059669/78804156-37d2-4d69-b0c0-2eaa28383db0)
+
