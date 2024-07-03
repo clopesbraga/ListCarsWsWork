@@ -7,13 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import br.com.wsworks.listcarswswork.model.database.LeadsModel
-import br.com.wsworks.listcarswswork.repository.Cars.ICarsDAO
+import br.com.wsworks.listcarswswork.repository.Cars.ILeadsDAO
 
-@Database(entities = arrayOf(LeadsModel::class), version = 1)
+@Database(entities = arrayOf(LeadsModel::class), version = 4)
 
 abstract class AppDataBase : RoomDatabase() {
 
-    abstract fun carsDAO(): ICarsDAO
+    abstract fun leadsDAO(): ILeadsDAO
 
     companion object {
 
@@ -36,9 +36,9 @@ abstract class AppDataBase : RoomDatabase() {
 
 }
 
-private val MIGRATION: Migration = object : Migration(0, 1) {
+private val MIGRATION: Migration = object : Migration(3, 4) {
     override fun migrate(db: SupportSQLiteDatabase) {
-        db.execSQL("DELETE FROM Cars")
+        db.execSQL("DELETE FROM Leads")
     }
 
 }

@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -45,12 +46,10 @@ fun LoginScreen(navController: NavHostController) {
     var password by remember { mutableStateOf("") }
 
     Column(
-        modifier = androidx.compose.ui.Modifier
-
+        modifier = Modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-
+        verticalArrangement = Arrangement.Center,
     ) {
         Box {
             OutlinedTextField(
@@ -63,7 +62,7 @@ fun LoginScreen(navController: NavHostController) {
 
         }
 
-        Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Box {
             TextField(
@@ -74,7 +73,7 @@ fun LoginScreen(navController: NavHostController) {
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
             )
         }
-        Spacer(modifier = androidx.compose.ui.Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Box { SaveLoginButton(navController, username, password, auth) }
     }
