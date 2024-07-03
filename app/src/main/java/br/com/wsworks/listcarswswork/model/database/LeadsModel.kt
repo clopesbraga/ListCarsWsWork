@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName="Cars")
+@Entity(tableName="Leads")
 class LeadsModel(
 
     @PrimaryKey(autoGenerate = false)
@@ -16,5 +16,6 @@ class LeadsModel(
     @ColumnInfo("num_portas") var num_portas: Int,
     @ColumnInfo("cor") var cor: String,
     @ColumnInfo("nome_modelo") var nome_modelo: String,
-    @ColumnInfo("valor") var valor: Double
+    @ColumnInfo("valor") var valor: Double,
+    @ColumnInfo("user_email") var user_email: String
 )
