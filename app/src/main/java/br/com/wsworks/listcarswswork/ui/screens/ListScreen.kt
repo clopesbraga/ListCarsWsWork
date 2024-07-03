@@ -80,9 +80,6 @@ fun ListScreen(navController: NavHostController) {
                             .fillMaxWidth()
                             .padding(start = 32.dp, top = 40.dp, bottom = 32.dp),
                     )
-//                    SearchBar(hint = "Pesquise o seu carro",) { carName ->
-//                        searchText = carName
-//                    }
                 }
             }
         }
@@ -95,7 +92,7 @@ fun ListScreen(navController: NavHostController) {
                         navController.navigate("detail/$carJson")
                     },
                     shape = shape,
-                    border = BorderStroke(10.dp, Color.Black),
+                    border = BorderStroke(5.dp, Color.Black),
                     colors = CardDefaults.cardColors(Color.Yellow)
                 ) {
                     Row(){

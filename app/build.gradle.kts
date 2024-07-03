@@ -87,7 +87,6 @@ dependencies {
 
     implementation (libs.androidx.room.runtime)
     implementation(libs.androidx.monitor)
-    // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$roomVersion")
 
 

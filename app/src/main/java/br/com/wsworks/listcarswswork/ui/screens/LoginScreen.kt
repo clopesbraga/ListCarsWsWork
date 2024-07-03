@@ -1,6 +1,7 @@
 package br.com.wsworks.listcarswswork.ui.screens
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,8 +11,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,14 +34,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import androidx.compose.ui.text.input.PasswordVisualTransformation as PasswordVisualTransformation1
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ListCarsWsWorkTheme {
-        LoginScreen(navController = rememberNavController())
-    }
-}
-
 @Composable
 fun LoginScreen(navController: NavHostController) {
 
@@ -47,9 +43,11 @@ fun LoginScreen(navController: NavHostController) {
 
     Column(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(Color.Yellow),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
+
     ) {
         Box {
             OutlinedTextField(
@@ -57,14 +55,16 @@ fun LoginScreen(navController: NavHostController) {
                 onValueChange = { username = it },
                 label = { Text("Email") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                singleLine = true
+                singleLine = true,
+                colors= OutlinedTextFieldDefaults.colors(Color.Black)
+
             )
 
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Box {
+        Box(modifier = Modifier.background(Color.Black)) {
             TextField(
                 value = password,
                 onValueChange = { password = it },
